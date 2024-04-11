@@ -2,9 +2,9 @@
 
 Data has been gathered and synthesised by One Ocean Hub Research Group, Department of Environmental and Geographical Science, UCT. 
 
-[!IMPORTANT]
-Disclaimer: This map is subject to constant updates based on available information. However, the accuracy of the polygons and the metadata cannot be guaranteed.  
-Map compiled by Michael Lambrecht (April 2024)
+>[!IMPORTANT]
+>Disclaimer: This map is subject to constant updates based on available information. However, the >accuracy of the polygons and the metadata cannot be guaranteed.  
+>Map compiled by Michael Lambrecht (April 2024)
 
 To view the map click the following link: https://mikeylamb.github.io/RSAMiningMap/
 
