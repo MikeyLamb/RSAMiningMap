@@ -1,6 +1,6 @@
 # Welcome to this web app of Mining on the West Coast of South Africa.
 
-The Mining Concessions Map provides a valuable tool for visualizing and understanding mining activities along the West Coast of South Africa. Users can 
+The Mining Concessions Map provides a valuable tool for visualizing and understanding mining activities along the West Coast of South Africa.
 
 Data has been gathered and synthesised by One Ocean Hub Research Group, Department of Environmental and Geographical Science, UCT. 
 
