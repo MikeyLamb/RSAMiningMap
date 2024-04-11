@@ -1,5 +1,7 @@
 # Welcome to this web app of Mining on the West Coast of South Africa.
 
+The Mining Concessions Map provides a valuable tool for visualizing and understanding mining activities along the West Coast of South Africa. Users can 
+
 Data has been gathered and synthesised by One Ocean Hub Research Group, Department of Environmental and Geographical Science, UCT. 
 
 >[!IMPORTANT]
@@ -8,7 +10,6 @@ Data has been gathered and synthesised by One Ocean Hub Research Group, Departme
 
 To view the map click the following link: https://mikeylamb.github.io/RSAMiningMap/
 
-The Mining Concessions Map provides a valuable tool for visualizing and understanding mining activities along the West Coast of South Africa. Users can 
 
 ## How to use the map:
 - Users can pan around the map and zoom in or out using their mouse of the buttons provided. You can also search for street addresses or geolocate themselves using the buttons on the top left side. The measurement button allows users to measure distances and areas. 
