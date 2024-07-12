@@ -30,6 +30,6 @@ By accessing or using any part of the code, data, or format provided in this rep
 
 **Legal Consequences:** Unauthorized use or distribution of this code, data, or format may result in legal consequences.
 
-**Contact:** For inquiries regarding authorized use or permissions, please contact [Your Contact Information].
+**Contact:** For inquiries regarding authorized use or permissions, please contact [Protect the West Coast](https://protectthewestcoast.org/).
 
 Your access to and use of the code, data, or format signifies your acceptance of these terms. If you do not agree with these terms, you must refrain from accessing or using any part of the repository.
