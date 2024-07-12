@@ -17,7 +17,7 @@ To view the map click the following link: https://mikeylamb.github.io/RSAMiningM
 - To get more information on a specific mining concession zoom in to the desired concession and click on the concession. A popup will appear giving you information on the name, status, code, resource targeted and various other information. For more information on that mining application you can click the blue link in the pop up block.
 
 
-[!Usage Agreement]
+>[!Usage Agreement]
 
 By accessing or using any part of the code, data, or format provided in this repository, you agree to the following terms:
 
