@@ -38,22 +38,23 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/SouthAfrica_3.js"></script>
-        <script src="data/AfricaOutline_4.js"></script>
-        <script src="data/Rivers_5.js"></script>
-        <script src="data/EmptyConcession_6.js"></script>
-        <script src="data/ProspectingRightExpired_7.js"></script>
-        <script src="data/ApplicationRefused_8.js"></script>
-        <script src="data/ReconnaissancePermit_9.js"></script>
-        <script src="data/ExplorationApplication_10.js"></script>
-        <script src="data/ExplorationRight_11.js"></script>
-        <script src="data/ProductionApplication_12.js"></script>
-        <script src="data/ProductionRight_13.js"></script>
-        <script src="data/ProspectingApplication_14.js"></script>
-        <script src="data/ProspectingRight_15.js"></script>
-        <script src="data/MiningApplication_16.js"></script>
-        <script src="data/MiningRight_17.js"></script>
-        <script src="data/Towns_18.js"></script>
+        <script src="data/SouthAfrica_4.js"></script>
+        <script src="data/RSAEEZ_5.js"></script>
+        <script src="data/AfricaOutline_6.js"></script>
+        <script src="data/Rivers_7.js"></script>
+        <script src="data/EmptyConcession_8.js"></script>
+        <script src="data/ProspectingRightExpired_9.js"></script>
+        <script src="data/ApplicationRefused_10.js"></script>
+        <script src="data/ReconnaissancePermit_11.js"></script>
+        <script src="data/ExplorationApplication_12.js"></script>
+        <script src="data/ExplorationRight_13.js"></script>
+        <script src="data/ProductionApplication_14.js"></script>
+        <script src="data/ProductionRight_15.js"></script>
+        <script src="data/ProspectingApplication_16.js"></script>
+        <script src="data/ProspectingRight_17.js"></script>
+        <script src="data/MiningApplication_18.js"></script>
+        <script src="data/MiningRight_19.js"></script>
+        <script src="data/Towns_20.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -72,7 +73,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:25, minZoom:1
-        }).fitBounds([[-35.29079057871848,14.847311551412275],[-28.6672225787185,25.63126126569795]]);
+        }).fitBounds([[-39.29378241149787,8.118189590345512],[-19.16871981717558,45.272151302940514]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://oneoceanhub.org/" title="Map Creator: One Ocean Hub & University of Cape Town" target="_blank">OOH UCT</a> &middot;<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a> &middot; <a href="https://www.google.com/maps">Google Maps</a> &middot; <a href="https://www.openstreetmap.org/#map=17/-33.34992/18.89169" target="_blank">Open Street Map</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -166,10 +167,22 @@
             maxNativeZoom: 22
         });
         layer_GoogleMaps_1;
-        map.createPane('pane_OpenStreetMap_2');
-        map.getPane('pane_OpenStreetMap_2').style.zIndex = 402;
-        var layer_OpenStreetMap_2 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_OpenStreetMap_2',
+        map.createPane('pane_GoogleHybrid_2');
+        map.getPane('pane_GoogleHybrid_2').style.zIndex = 402;
+        var layer_GoogleHybrid_2 = L.tileLayer('http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_2',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 25,
+            minNativeZoom: 0,
+            maxNativeZoom: 25
+        });
+        layer_GoogleHybrid_2;
+        map.createPane('pane_OpenStreetMap_3');
+        map.getPane('pane_OpenStreetMap_3').style.zIndex = 403;
+        var layer_OpenStreetMap_3 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_3',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
@@ -177,8 +190,8 @@
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
-        layer_OpenStreetMap_2;
-        function pop_SouthAfrica_3(feature, layer) {
+        layer_OpenStreetMap_3;
+        function pop_SouthAfrica_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -237,9 +250,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_SouthAfrica_3_0() {
+        function style_SouthAfrica_4_0() {
             return {
-                pane: 'pane_SouthAfrica_3',
+                pane: 'pane_SouthAfrica_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -252,21 +265,73 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_SouthAfrica_3');
-        map.getPane('pane_SouthAfrica_3').style.zIndex = 403;
-        map.getPane('pane_SouthAfrica_3').style['mix-blend-mode'] = 'normal';
-        var layer_SouthAfrica_3 = new L.geoJson(json_SouthAfrica_3, {
+        map.createPane('pane_SouthAfrica_4');
+        map.getPane('pane_SouthAfrica_4').style.zIndex = 404;
+        map.getPane('pane_SouthAfrica_4').style['mix-blend-mode'] = 'normal';
+        var layer_SouthAfrica_4 = new L.geoJson(json_SouthAfrica_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_SouthAfrica_3',
-            layerName: 'layer_SouthAfrica_3',
-            pane: 'pane_SouthAfrica_3',
-            onEachFeature: pop_SouthAfrica_3,
-            style: style_SouthAfrica_3_0,
+            dataVar: 'json_SouthAfrica_4',
+            layerName: 'layer_SouthAfrica_4',
+            pane: 'pane_SouthAfrica_4',
+            onEachFeature: pop_SouthAfrica_4,
+            style: style_SouthAfrica_4_0,
         });
-        bounds_group.addLayer(layer_SouthAfrica_3);
-        map.addLayer(layer_SouthAfrica_3);
-        function pop_AfricaOutline_4(feature, layer) {
+        bounds_group.addLayer(layer_SouthAfrica_4);
+        map.addLayer(layer_SouthAfrica_4);
+        function pop_RSAEEZ_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEONAME'] !== null ? autolinker.link(feature.properties['GEONAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_RSAEEZ_5_0() {
+            return {
+                pane: 'pane_RSAEEZ_5',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_RSAEEZ_5');
+        map.getPane('pane_RSAEEZ_5').style.zIndex = 405;
+        map.getPane('pane_RSAEEZ_5').style['mix-blend-mode'] = 'normal';
+        var layer_RSAEEZ_5 = new L.geoJson(json_RSAEEZ_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_RSAEEZ_5',
+            layerName: 'layer_RSAEEZ_5',
+            pane: 'pane_RSAEEZ_5',
+            onEachFeature: pop_RSAEEZ_5,
+            style: style_RSAEEZ_5_0,
+        });
+        bounds_group.addLayer(layer_RSAEEZ_5);
+        function pop_AfricaOutline_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -358,9 +423,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AfricaOutline_4_0() {
+        function style_AfricaOutline_6_0() {
             return {
-                pane: 'pane_AfricaOutline_4',
+                pane: 'pane_AfricaOutline_6',
                 opacity: 1,
                 color: 'rgba(124,124,124,1.0)',
                 dashArray: '',
@@ -373,21 +438,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_AfricaOutline_4');
-        map.getPane('pane_AfricaOutline_4').style.zIndex = 404;
-        map.getPane('pane_AfricaOutline_4').style['mix-blend-mode'] = 'normal';
-        var layer_AfricaOutline_4 = new L.geoJson(json_AfricaOutline_4, {
+        map.createPane('pane_AfricaOutline_6');
+        map.getPane('pane_AfricaOutline_6').style.zIndex = 406;
+        map.getPane('pane_AfricaOutline_6').style['mix-blend-mode'] = 'normal';
+        var layer_AfricaOutline_6 = new L.geoJson(json_AfricaOutline_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_AfricaOutline_4',
-            layerName: 'layer_AfricaOutline_4',
-            pane: 'pane_AfricaOutline_4',
-            onEachFeature: pop_AfricaOutline_4,
-            style: style_AfricaOutline_4_0,
+            dataVar: 'json_AfricaOutline_6',
+            layerName: 'layer_AfricaOutline_6',
+            pane: 'pane_AfricaOutline_6',
+            onEachFeature: pop_AfricaOutline_6,
+            style: style_AfricaOutline_6_0,
         });
-        bounds_group.addLayer(layer_AfricaOutline_4);
-        map.addLayer(layer_AfricaOutline_4);
-        function pop_Rivers_5(feature, layer) {
+        bounds_group.addLayer(layer_AfricaOutline_6);
+        map.addLayer(layer_AfricaOutline_6);
+        function pop_Rivers_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -413,9 +478,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Rivers_5_0() {
+        function style_Rivers_7_0() {
             return {
-                pane: 'pane_Rivers_5',
+                pane: 'pane_Rivers_7',
                 opacity: 1,
                 color: 'rgba(47,136,163,1.0)',
                 dashArray: '',
@@ -426,21 +491,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Rivers_5');
-        map.getPane('pane_Rivers_5').style.zIndex = 405;
-        map.getPane('pane_Rivers_5').style['mix-blend-mode'] = 'normal';
-        var layer_Rivers_5 = new L.geoJson(json_Rivers_5, {
+        map.createPane('pane_Rivers_7');
+        map.getPane('pane_Rivers_7').style.zIndex = 407;
+        map.getPane('pane_Rivers_7').style['mix-blend-mode'] = 'normal';
+        var layer_Rivers_7 = new L.geoJson(json_Rivers_7, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Rivers_5',
-            layerName: 'layer_Rivers_5',
-            pane: 'pane_Rivers_5',
-            onEachFeature: pop_Rivers_5,
-            style: style_Rivers_5_0,
+            dataVar: 'json_Rivers_7',
+            layerName: 'layer_Rivers_7',
+            pane: 'pane_Rivers_7',
+            onEachFeature: pop_Rivers_7,
+            style: style_Rivers_7_0,
         });
-        bounds_group.addLayer(layer_Rivers_5);
-        map.addLayer(layer_Rivers_5);
-        function pop_EmptyConcession_6(feature, layer) {
+        bounds_group.addLayer(layer_Rivers_7);
+        map.addLayer(layer_Rivers_7);
+        function pop_EmptyConcession_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -453,40 +518,49 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
-                        <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Code</th>\
-                        <td class="visible-with-data" id="Code">' + (feature.properties['Code'] !== null ? autolinker.link(feature.properties['Code'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Code'] !== null ? autolinker.link(feature.properties['Code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Rights Holder</th>\
-                        <td class="visible-with-data" id="Rights Holder">' + (feature.properties['Rights Holder'] !== null ? autolinker.link(feature.properties['Rights Holder'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Rights Holder'] !== null ? autolinker.link(feature.properties['Rights Holder'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Concession</th>\
-                        <td class="visible-with-data" id="Concession">' + (feature.properties['Concession'] !== null ? autolinker.link(feature.properties['Concession'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Concession'] !== null ? autolinker.link(feature.properties['Concession'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Resource Targeted</th>\
-                        <td class="visible-with-data" id="Resource Targeted">' + (feature.properties['Resource Targeted'] !== null ? autolinker.link(feature.properties['Resource Targeted'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Resource Targeted'] !== null ? autolinker.link(feature.properties['Resource Targeted'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Area (ha)</th>\
-                        <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
-                        <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td>' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -496,9 +570,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_EmptyConcession_6_0() {
+        function style_EmptyConcession_8_0() {
             return {
-                pane: 'pane_EmptyConcession_6',
+                pane: 'pane_EmptyConcession_8',
                 opacity: 1,
                 color: 'rgba(60,60,60,1.0)',
                 dashArray: '',
@@ -509,20 +583,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_EmptyConcession_6');
-        map.getPane('pane_EmptyConcession_6').style.zIndex = 406;
-        map.getPane('pane_EmptyConcession_6').style['mix-blend-mode'] = 'normal';
-        var layer_EmptyConcession_6 = new L.geoJson(json_EmptyConcession_6, {
+        map.createPane('pane_EmptyConcession_8');
+        map.getPane('pane_EmptyConcession_8').style.zIndex = 408;
+        map.getPane('pane_EmptyConcession_8').style['mix-blend-mode'] = 'normal';
+        var layer_EmptyConcession_8 = new L.geoJson(json_EmptyConcession_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_EmptyConcession_6',
-            layerName: 'layer_EmptyConcession_6',
-            pane: 'pane_EmptyConcession_6',
-            onEachFeature: pop_EmptyConcession_6,
-            style: style_EmptyConcession_6_0,
+            dataVar: 'json_EmptyConcession_8',
+            layerName: 'layer_EmptyConcession_8',
+            pane: 'pane_EmptyConcession_8',
+            onEachFeature: pop_EmptyConcession_8,
+            style: style_EmptyConcession_8_0,
         });
-        bounds_group.addLayer(layer_EmptyConcession_6);
-        function pop_ProspectingRightExpired_7(feature, layer) {
+        bounds_group.addLayer(layer_EmptyConcession_8);
+        function pop_ProspectingRightExpired_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -535,8 +609,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -563,12 +639,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -578,9 +661,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ProspectingRightExpired_7_0() {
+        function style_ProspectingRightExpired_9_0() {
             return {
-                pane: 'pane_ProspectingRightExpired_7',
+                pane: 'pane_ProspectingRightExpired_9',
                 opacity: 1,
                 color: 'rgba(230,230,161,1.0)',
                 dashArray: '',
@@ -593,20 +676,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ProspectingRightExpired_7');
-        map.getPane('pane_ProspectingRightExpired_7').style.zIndex = 407;
-        map.getPane('pane_ProspectingRightExpired_7').style['mix-blend-mode'] = 'normal';
-        var layer_ProspectingRightExpired_7 = new L.geoJson(json_ProspectingRightExpired_7, {
+        map.createPane('pane_ProspectingRightExpired_9');
+        map.getPane('pane_ProspectingRightExpired_9').style.zIndex = 409;
+        map.getPane('pane_ProspectingRightExpired_9').style['mix-blend-mode'] = 'normal';
+        var layer_ProspectingRightExpired_9 = new L.geoJson(json_ProspectingRightExpired_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ProspectingRightExpired_7',
-            layerName: 'layer_ProspectingRightExpired_7',
-            pane: 'pane_ProspectingRightExpired_7',
-            onEachFeature: pop_ProspectingRightExpired_7,
-            style: style_ProspectingRightExpired_7_0,
+            dataVar: 'json_ProspectingRightExpired_9',
+            layerName: 'layer_ProspectingRightExpired_9',
+            pane: 'pane_ProspectingRightExpired_9',
+            onEachFeature: pop_ProspectingRightExpired_9,
+            style: style_ProspectingRightExpired_9_0,
         });
-        bounds_group.addLayer(layer_ProspectingRightExpired_7);
-        function pop_ApplicationRefused_8(feature, layer) {
+        bounds_group.addLayer(layer_ProspectingRightExpired_9);
+        function pop_ApplicationRefused_10(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -619,8 +702,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -647,12 +732,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -662,9 +754,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ApplicationRefused_8_0() {
+        function style_ApplicationRefused_10_0() {
             return {
-                pane: 'pane_ApplicationRefused_8',
+                pane: 'pane_ApplicationRefused_10',
                 opacity: 1,
                 color: 'rgba(86,125,82,1.0)',
                 dashArray: '',
@@ -677,20 +769,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ApplicationRefused_8');
-        map.getPane('pane_ApplicationRefused_8').style.zIndex = 408;
-        map.getPane('pane_ApplicationRefused_8').style['mix-blend-mode'] = 'normal';
-        var layer_ApplicationRefused_8 = new L.geoJson(json_ApplicationRefused_8, {
+        map.createPane('pane_ApplicationRefused_10');
+        map.getPane('pane_ApplicationRefused_10').style.zIndex = 410;
+        map.getPane('pane_ApplicationRefused_10').style['mix-blend-mode'] = 'normal';
+        var layer_ApplicationRefused_10 = new L.geoJson(json_ApplicationRefused_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ApplicationRefused_8',
-            layerName: 'layer_ApplicationRefused_8',
-            pane: 'pane_ApplicationRefused_8',
-            onEachFeature: pop_ApplicationRefused_8,
-            style: style_ApplicationRefused_8_0,
+            dataVar: 'json_ApplicationRefused_10',
+            layerName: 'layer_ApplicationRefused_10',
+            pane: 'pane_ApplicationRefused_10',
+            onEachFeature: pop_ApplicationRefused_10,
+            style: style_ApplicationRefused_10_0,
         });
-        bounds_group.addLayer(layer_ApplicationRefused_8);
-        function pop_ReconnaissancePermit_9(feature, layer) {
+        bounds_group.addLayer(layer_ApplicationRefused_10);
+        function pop_ReconnaissancePermit_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -703,8 +795,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -731,12 +825,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
-                        <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -746,7 +847,7 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        var pattern_ReconnaissancePermit_9_0 = new L.StripePattern({
+        var pattern_ReconnaissancePermit_11_0 = new L.StripePattern({
             weight: 0.5,
             spaceWeight: 4.0,
             color: '#7c7c7c',
@@ -754,19 +855,19 @@
             spaceOpacity: 0,
             angle: 315
         });
-        pattern_ReconnaissancePermit_9_0.addTo(map);
-        function style_ReconnaissancePermit_9_0() {
+        pattern_ReconnaissancePermit_11_0.addTo(map);
+        function style_ReconnaissancePermit_11_0() {
             return {
-                pane: 'pane_ReconnaissancePermit_9',
+                pane: 'pane_ReconnaissancePermit_11',
                 stroke: false,
                 fillOpacity: 1,
-                fillPattern: pattern_ReconnaissancePermit_9_0,
+                fillPattern: pattern_ReconnaissancePermit_11_0,
                 interactive: true,
             }
         }
-        function style_ReconnaissancePermit_9_1() {
+        function style_ReconnaissancePermit_11_1() {
             return {
-                pane: 'pane_ReconnaissancePermit_9',
+                pane: 'pane_ReconnaissancePermit_11',
                 opacity: 1,
                 color: 'rgba(60,60,60,1.0)',
                 dashArray: '',
@@ -777,20 +878,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ReconnaissancePermit_9');
-        map.getPane('pane_ReconnaissancePermit_9').style.zIndex = 409;
-        map.getPane('pane_ReconnaissancePermit_9').style['mix-blend-mode'] = 'normal';
-        var layer_ReconnaissancePermit_9 = new L.geoJson.multiStyle(json_ReconnaissancePermit_9, {
+        map.createPane('pane_ReconnaissancePermit_11');
+        map.getPane('pane_ReconnaissancePermit_11').style.zIndex = 411;
+        map.getPane('pane_ReconnaissancePermit_11').style['mix-blend-mode'] = 'normal';
+        var layer_ReconnaissancePermit_11 = new L.geoJson.multiStyle(json_ReconnaissancePermit_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ReconnaissancePermit_9',
-            layerName: 'layer_ReconnaissancePermit_9',
-            pane: 'pane_ReconnaissancePermit_9',
-            onEachFeature: pop_ReconnaissancePermit_9,
-            styles: [style_ReconnaissancePermit_9_0,style_ReconnaissancePermit_9_1,]
+            dataVar: 'json_ReconnaissancePermit_11',
+            layerName: 'layer_ReconnaissancePermit_11',
+            pane: 'pane_ReconnaissancePermit_11',
+            onEachFeature: pop_ReconnaissancePermit_11,
+            styles: [style_ReconnaissancePermit_11_0,style_ReconnaissancePermit_11_1,]
         });
-        bounds_group.addLayer(layer_ReconnaissancePermit_9);
-        function pop_ExplorationApplication_10(feature, layer) {
+        bounds_group.addLayer(layer_ReconnaissancePermit_11);
+        function pop_ExplorationApplication_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -803,8 +904,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -831,12 +934,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -846,9 +956,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ExplorationApplication_10_0() {
+        function style_ExplorationApplication_12_0() {
             return {
-                pane: 'pane_ExplorationApplication_10',
+                pane: 'pane_ExplorationApplication_12',
                 opacity: 1,
                 color: 'rgba(222,194,145,1.0)',
                 dashArray: '',
@@ -861,20 +971,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ExplorationApplication_10');
-        map.getPane('pane_ExplorationApplication_10').style.zIndex = 410;
-        map.getPane('pane_ExplorationApplication_10').style['mix-blend-mode'] = 'normal';
-        var layer_ExplorationApplication_10 = new L.geoJson(json_ExplorationApplication_10, {
+        map.createPane('pane_ExplorationApplication_12');
+        map.getPane('pane_ExplorationApplication_12').style.zIndex = 412;
+        map.getPane('pane_ExplorationApplication_12').style['mix-blend-mode'] = 'normal';
+        var layer_ExplorationApplication_12 = new L.geoJson(json_ExplorationApplication_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ExplorationApplication_10',
-            layerName: 'layer_ExplorationApplication_10',
-            pane: 'pane_ExplorationApplication_10',
-            onEachFeature: pop_ExplorationApplication_10,
-            style: style_ExplorationApplication_10_0,
+            dataVar: 'json_ExplorationApplication_12',
+            layerName: 'layer_ExplorationApplication_12',
+            pane: 'pane_ExplorationApplication_12',
+            onEachFeature: pop_ExplorationApplication_12,
+            style: style_ExplorationApplication_12_0,
         });
-        bounds_group.addLayer(layer_ExplorationApplication_10);
-        function pop_ExplorationRight_11(feature, layer) {
+        bounds_group.addLayer(layer_ExplorationApplication_12);
+        function pop_ExplorationRight_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -887,8 +997,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -915,12 +1027,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -930,9 +1049,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ExplorationRight_11_0() {
+        function style_ExplorationRight_13_0() {
             return {
-                pane: 'pane_ExplorationRight_11',
+                pane: 'pane_ExplorationRight_13',
                 opacity: 1,
                 color: 'rgba(194,143,84,1.0)',
                 dashArray: '',
@@ -945,20 +1064,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ExplorationRight_11');
-        map.getPane('pane_ExplorationRight_11').style.zIndex = 411;
-        map.getPane('pane_ExplorationRight_11').style['mix-blend-mode'] = 'normal';
-        var layer_ExplorationRight_11 = new L.geoJson(json_ExplorationRight_11, {
+        map.createPane('pane_ExplorationRight_13');
+        map.getPane('pane_ExplorationRight_13').style.zIndex = 413;
+        map.getPane('pane_ExplorationRight_13').style['mix-blend-mode'] = 'normal';
+        var layer_ExplorationRight_13 = new L.geoJson(json_ExplorationRight_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ExplorationRight_11',
-            layerName: 'layer_ExplorationRight_11',
-            pane: 'pane_ExplorationRight_11',
-            onEachFeature: pop_ExplorationRight_11,
-            style: style_ExplorationRight_11_0,
+            dataVar: 'json_ExplorationRight_13',
+            layerName: 'layer_ExplorationRight_13',
+            pane: 'pane_ExplorationRight_13',
+            onEachFeature: pop_ExplorationRight_13,
+            style: style_ExplorationRight_13_0,
         });
-        bounds_group.addLayer(layer_ExplorationRight_11);
-        function pop_ProductionApplication_12(feature, layer) {
+        bounds_group.addLayer(layer_ExplorationRight_13);
+        function pop_ProductionApplication_14(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -971,8 +1090,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -999,12 +1120,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1014,9 +1142,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ProductionApplication_12_0() {
+        function style_ProductionApplication_14_0() {
             return {
-                pane: 'pane_ProductionApplication_12',
+                pane: 'pane_ProductionApplication_14',
                 opacity: 1,
                 color: 'rgba(201,148,87,1.0)',
                 dashArray: '',
@@ -1029,20 +1157,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ProductionApplication_12');
-        map.getPane('pane_ProductionApplication_12').style.zIndex = 412;
-        map.getPane('pane_ProductionApplication_12').style['mix-blend-mode'] = 'normal';
-        var layer_ProductionApplication_12 = new L.geoJson(json_ProductionApplication_12, {
+        map.createPane('pane_ProductionApplication_14');
+        map.getPane('pane_ProductionApplication_14').style.zIndex = 414;
+        map.getPane('pane_ProductionApplication_14').style['mix-blend-mode'] = 'normal';
+        var layer_ProductionApplication_14 = new L.geoJson(json_ProductionApplication_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ProductionApplication_12',
-            layerName: 'layer_ProductionApplication_12',
-            pane: 'pane_ProductionApplication_12',
-            onEachFeature: pop_ProductionApplication_12,
-            style: style_ProductionApplication_12_0,
+            dataVar: 'json_ProductionApplication_14',
+            layerName: 'layer_ProductionApplication_14',
+            pane: 'pane_ProductionApplication_14',
+            onEachFeature: pop_ProductionApplication_14,
+            style: style_ProductionApplication_14_0,
         });
-        bounds_group.addLayer(layer_ProductionApplication_12);
-        function pop_ProductionRight_13(feature, layer) {
+        bounds_group.addLayer(layer_ProductionApplication_14);
+        function pop_ProductionRight_15(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1055,8 +1183,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -1083,12 +1213,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1098,9 +1235,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ProductionRight_13_0() {
+        function style_ProductionRight_15_0() {
             return {
-                pane: 'pane_ProductionRight_13',
+                pane: 'pane_ProductionRight_15',
                 opacity: 1,
                 color: 'rgba(184,129,66,1.0)',
                 dashArray: '',
@@ -1113,20 +1250,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ProductionRight_13');
-        map.getPane('pane_ProductionRight_13').style.zIndex = 413;
-        map.getPane('pane_ProductionRight_13').style['mix-blend-mode'] = 'normal';
-        var layer_ProductionRight_13 = new L.geoJson(json_ProductionRight_13, {
+        map.createPane('pane_ProductionRight_15');
+        map.getPane('pane_ProductionRight_15').style.zIndex = 415;
+        map.getPane('pane_ProductionRight_15').style['mix-blend-mode'] = 'normal';
+        var layer_ProductionRight_15 = new L.geoJson(json_ProductionRight_15, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ProductionRight_13',
-            layerName: 'layer_ProductionRight_13',
-            pane: 'pane_ProductionRight_13',
-            onEachFeature: pop_ProductionRight_13,
-            style: style_ProductionRight_13_0,
+            dataVar: 'json_ProductionRight_15',
+            layerName: 'layer_ProductionRight_15',
+            pane: 'pane_ProductionRight_15',
+            onEachFeature: pop_ProductionRight_15,
+            style: style_ProductionRight_15_0,
         });
-        bounds_group.addLayer(layer_ProductionRight_13);
-        function pop_ProspectingApplication_14(feature, layer) {
+        bounds_group.addLayer(layer_ProductionRight_15);
+        function pop_ProspectingApplication_16(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1139,8 +1276,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -1167,12 +1306,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1182,9 +1328,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ProspectingApplication_14_0() {
+        function style_ProspectingApplication_16_0() {
             return {
-                pane: 'pane_ProspectingApplication_14',
+                pane: 'pane_ProspectingApplication_16',
                 opacity: 1,
                 color: 'rgba(181,92,60,1.0)',
                 dashArray: '',
@@ -1197,20 +1343,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ProspectingApplication_14');
-        map.getPane('pane_ProspectingApplication_14').style.zIndex = 414;
-        map.getPane('pane_ProspectingApplication_14').style['mix-blend-mode'] = 'normal';
-        var layer_ProspectingApplication_14 = new L.geoJson(json_ProspectingApplication_14, {
+        map.createPane('pane_ProspectingApplication_16');
+        map.getPane('pane_ProspectingApplication_16').style.zIndex = 416;
+        map.getPane('pane_ProspectingApplication_16').style['mix-blend-mode'] = 'normal';
+        var layer_ProspectingApplication_16 = new L.geoJson(json_ProspectingApplication_16, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ProspectingApplication_14',
-            layerName: 'layer_ProspectingApplication_14',
-            pane: 'pane_ProspectingApplication_14',
-            onEachFeature: pop_ProspectingApplication_14,
-            style: style_ProspectingApplication_14_0,
+            dataVar: 'json_ProspectingApplication_16',
+            layerName: 'layer_ProspectingApplication_16',
+            pane: 'pane_ProspectingApplication_16',
+            onEachFeature: pop_ProspectingApplication_16,
+            style: style_ProspectingApplication_16_0,
         });
-        bounds_group.addLayer(layer_ProspectingApplication_14);
-        function pop_ProspectingRight_15(feature, layer) {
+        bounds_group.addLayer(layer_ProspectingApplication_16);
+        function pop_ProspectingRight_17(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1223,8 +1369,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -1247,8 +1395,10 @@
                         <td class="visible-with-data" id="Resource Targeted">' + (feature.properties['Resource Targeted'] !== null ? autolinker.link(feature.properties['Resource Targeted'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Area (ha)</th>\
-                        <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Area (ha)"colspan="2"><strong>Area (ha)</strong><br />' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1258,6 +1408,10 @@
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
+                    </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
@@ -1266,9 +1420,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ProspectingRight_15_0() {
+        function style_ProspectingRight_17_0() {
             return {
-                pane: 'pane_ProspectingRight_15',
+                pane: 'pane_ProspectingRight_17',
                 opacity: 1,
                 color: 'rgba(186,66,63,1.0)',
                 dashArray: '',
@@ -1281,20 +1435,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ProspectingRight_15');
-        map.getPane('pane_ProspectingRight_15').style.zIndex = 415;
-        map.getPane('pane_ProspectingRight_15').style['mix-blend-mode'] = 'normal';
-        var layer_ProspectingRight_15 = new L.geoJson(json_ProspectingRight_15, {
+        map.createPane('pane_ProspectingRight_17');
+        map.getPane('pane_ProspectingRight_17').style.zIndex = 417;
+        map.getPane('pane_ProspectingRight_17').style['mix-blend-mode'] = 'normal';
+        var layer_ProspectingRight_17 = new L.geoJson(json_ProspectingRight_17, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ProspectingRight_15',
-            layerName: 'layer_ProspectingRight_15',
-            pane: 'pane_ProspectingRight_15',
-            onEachFeature: pop_ProspectingRight_15,
-            style: style_ProspectingRight_15_0,
+            dataVar: 'json_ProspectingRight_17',
+            layerName: 'layer_ProspectingRight_17',
+            pane: 'pane_ProspectingRight_17',
+            onEachFeature: pop_ProspectingRight_17,
+            style: style_ProspectingRight_17_0,
         });
-        bounds_group.addLayer(layer_ProspectingRight_15);
-        function pop_MiningApplication_16(feature, layer) {
+        bounds_group.addLayer(layer_ProspectingRight_17);
+        function pop_MiningApplication_18(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1307,8 +1461,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -1335,12 +1491,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1350,9 +1513,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_MiningApplication_16_0() {
+        function style_MiningApplication_18_0() {
             return {
-                pane: 'pane_MiningApplication_16',
+                pane: 'pane_MiningApplication_18',
                 opacity: 1,
                 color: 'rgba(155,41,57,1.0)',
                 dashArray: '',
@@ -1365,20 +1528,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_MiningApplication_16');
-        map.getPane('pane_MiningApplication_16').style.zIndex = 416;
-        map.getPane('pane_MiningApplication_16').style['mix-blend-mode'] = 'normal';
-        var layer_MiningApplication_16 = new L.geoJson(json_MiningApplication_16, {
+        map.createPane('pane_MiningApplication_18');
+        map.getPane('pane_MiningApplication_18').style.zIndex = 418;
+        map.getPane('pane_MiningApplication_18').style['mix-blend-mode'] = 'normal';
+        var layer_MiningApplication_18 = new L.geoJson(json_MiningApplication_18, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MiningApplication_16',
-            layerName: 'layer_MiningApplication_16',
-            pane: 'pane_MiningApplication_16',
-            onEachFeature: pop_MiningApplication_16,
-            style: style_MiningApplication_16_0,
+            dataVar: 'json_MiningApplication_18',
+            layerName: 'layer_MiningApplication_18',
+            pane: 'pane_MiningApplication_18',
+            onEachFeature: pop_MiningApplication_18,
+            style: style_MiningApplication_18_0,
         });
-        bounds_group.addLayer(layer_MiningApplication_16);
-        function pop_MiningRight_17(feature, layer) {
+        bounds_group.addLayer(layer_MiningApplication_18);
+        function pop_MiningRight_19(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1391,8 +1554,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">LastUpdate</th>\
-                        <td class="visible-with-data" id="LastUpdate">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Status</th>\
@@ -1419,12 +1584,19 @@
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Primary Resources</th>\
                         <td class="visible-with-data" id="Primary Resources">' + (feature.properties['Primary Resources'] !== null ? autolinker.link(feature.properties['Primary Resources'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Additional Resources</th>\
                         <td class="visible-with-data" id="Additional Resources">' + (feature.properties['Additional Resources'] !== null ? autolinker.link(feature.properties['Additional Resources'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Comments</th>\
+                        <td class="visible-with-data" id="Comments">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1434,9 +1606,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_MiningRight_17_0() {
+        function style_MiningRight_19_0() {
             return {
-                pane: 'pane_MiningRight_17',
+                pane: 'pane_MiningRight_19',
                 opacity: 1,
                 color: 'rgba(107,33,45,1.0)',
                 dashArray: '',
@@ -1449,20 +1621,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_MiningRight_17');
-        map.getPane('pane_MiningRight_17').style.zIndex = 417;
-        map.getPane('pane_MiningRight_17').style['mix-blend-mode'] = 'normal';
-        var layer_MiningRight_17 = new L.geoJson(json_MiningRight_17, {
+        map.createPane('pane_MiningRight_19');
+        map.getPane('pane_MiningRight_19').style.zIndex = 419;
+        map.getPane('pane_MiningRight_19').style['mix-blend-mode'] = 'normal';
+        var layer_MiningRight_19 = new L.geoJson(json_MiningRight_19, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MiningRight_17',
-            layerName: 'layer_MiningRight_17',
-            pane: 'pane_MiningRight_17',
-            onEachFeature: pop_MiningRight_17,
-            style: style_MiningRight_17_0,
+            dataVar: 'json_MiningRight_19',
+            layerName: 'layer_MiningRight_19',
+            pane: 'pane_MiningRight_19',
+            onEachFeature: pop_MiningRight_19,
+            style: style_MiningRight_19_0,
         });
-        bounds_group.addLayer(layer_MiningRight_17);
-        function pop_Towns_18(feature, layer) {
+        bounds_group.addLayer(layer_MiningRight_19);
+        function pop_Towns_20(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1482,9 +1654,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Towns_18_0() {
+        function style_Towns_20_0() {
             return {
-                pane: 'pane_Towns_18',
+                pane: 'pane_Towns_20',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1498,44 +1670,46 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Towns_18');
-        map.getPane('pane_Towns_18').style.zIndex = 418;
-        map.getPane('pane_Towns_18').style['mix-blend-mode'] = 'normal';
-        var layer_Towns_18 = new L.geoJson(json_Towns_18, {
+        map.createPane('pane_Towns_20');
+        map.getPane('pane_Towns_20').style.zIndex = 420;
+        map.getPane('pane_Towns_20').style['mix-blend-mode'] = 'normal';
+        var layer_Towns_20 = new L.geoJson(json_Towns_20, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Towns_18',
-            layerName: 'layer_Towns_18',
-            pane: 'pane_Towns_18',
-            onEachFeature: pop_Towns_18,
+            dataVar: 'json_Towns_20',
+            layerName: 'layer_Towns_20',
+            pane: 'pane_Towns_20',
+            onEachFeature: pop_Towns_20,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Towns_18_0(feature));
+                return L.circleMarker(latlng, style_Towns_20_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Towns_18);
-        map.addLayer(layer_Towns_18);
+        bounds_group.addLayer(layer_Towns_20);
+        map.addLayer(layer_Towns_20);
         var overlaysTree = [
-            {label: '<img src="legend/Towns_18.png" /> Towns', layer: layer_Towns_18},
-            {label: '<img src="legend/MiningRight_17.png" /> Mining Right', layer: layer_MiningRight_17},
-            {label: '<img src="legend/MiningApplication_16.png" /> Mining Application', layer: layer_MiningApplication_16},
-            {label: '<img src="legend/ProspectingRight_15.png" /> Prospecting Right', layer: layer_ProspectingRight_15},
-            {label: '<img src="legend/ProspectingApplication_14.png" /> Prospecting Application', layer: layer_ProspectingApplication_14},
-            {label: '<img src="legend/ProductionRight_13.png" /> Production Right', layer: layer_ProductionRight_13},
-            {label: '<img src="legend/ProductionApplication_12.png" /> Production Application', layer: layer_ProductionApplication_12},
-            {label: '<img src="legend/ExplorationRight_11.png" /> Exploration Right', layer: layer_ExplorationRight_11},
-            {label: '<img src="legend/ExplorationApplication_10.png" /> Exploration Application', layer: layer_ExplorationApplication_10},
-            {label: '<img src="legend/ReconnaissancePermit_9.png" /> Reconnaissance Permit', layer: layer_ReconnaissancePermit_9},
-            {label: '<img src="legend/ApplicationRefused_8.png" /> Application Refused', layer: layer_ApplicationRefused_8},
-            {label: '<img src="legend/ProspectingRightExpired_7.png" /> Prospecting Right Expired', layer: layer_ProspectingRightExpired_7},
-            {label: '<img src="legend/EmptyConcession_6.png" /> Empty Concession', layer: layer_EmptyConcession_6},
-            {label: '<img src="legend/Rivers_5.png" /> Rivers', layer: layer_Rivers_5},
-            {label: '<img src="legend/AfricaOutline_4.png" /> Africa Outline', layer: layer_AfricaOutline_4},
-            {label: '<img src="legend/SouthAfrica_3.png" /> South Africa', layer: layer_SouthAfrica_3},
-            {label: "OpenStreetMap", layer: layer_OpenStreetMap_2},
+            {label: '<img src="legend/Towns_20.png" /> Towns', layer: layer_Towns_20},
+            {label: '<img src="legend/MiningRight_19.png" /> Mining Right', layer: layer_MiningRight_19},
+            {label: '<img src="legend/MiningApplication_18.png" /> Mining Application', layer: layer_MiningApplication_18},
+            {label: '<img src="legend/ProspectingRight_17.png" /> Prospecting Right', layer: layer_ProspectingRight_17},
+            {label: '<img src="legend/ProspectingApplication_16.png" /> Prospecting Application', layer: layer_ProspectingApplication_16},
+            {label: '<img src="legend/ProductionRight_15.png" /> Production Right', layer: layer_ProductionRight_15},
+            {label: '<img src="legend/ProductionApplication_14.png" /> Production Application', layer: layer_ProductionApplication_14},
+            {label: '<img src="legend/ExplorationRight_13.png" /> Exploration Right', layer: layer_ExplorationRight_13},
+            {label: '<img src="legend/ExplorationApplication_12.png" /> Exploration Application', layer: layer_ExplorationApplication_12},
+            {label: '<img src="legend/ReconnaissancePermit_11.png" /> Reconnaissance Permit', layer: layer_ReconnaissancePermit_11},
+            {label: '<img src="legend/ApplicationRefused_10.png" /> Application Refused', layer: layer_ApplicationRefused_10},
+            {label: '<img src="legend/ProspectingRightExpired_9.png" /> Prospecting Right Expired', layer: layer_ProspectingRightExpired_9},
+            {label: '<img src="legend/EmptyConcession_8.png" /> Empty Concession', layer: layer_EmptyConcession_8},
+            {label: '<img src="legend/Rivers_7.png" /> Rivers', layer: layer_Rivers_7},
+            {label: '<img src="legend/AfricaOutline_6.png" /> Africa Outline', layer: layer_AfricaOutline_6},
+            {label: '<img src="legend/RSAEEZ_5.png" /> RSA EEZ', layer: layer_RSAEEZ_5},
+            {label: '<img src="legend/SouthAfrica_4.png" /> South Africa', layer: layer_SouthAfrica_4},
+            {label: "OpenStreetMap", layer: layer_OpenStreetMap_3},
+            {label: "Google Hybrid", layer: layer_GoogleHybrid_2},
             {label: "Google Maps", layer: layer_GoogleMaps_1},
             {label: "Google Satellite", layer: layer_GoogleSatellite_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -1600,27 +1774,40 @@
         });       
         setBounds();
         var i = 0;
-        layer_Towns_18.eachLayer(function(layer) {
+        layer_SouthAfrica_4.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Name'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Towns_18'});
+            layer.bindTooltip((layer.feature.properties['ADM1_EN'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['ADM1_EN']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SouthAfrica_4'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_Rivers_5,layer_Towns_18]);
+        var i = 0;
+        layer_Towns_20.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Name'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Towns_20'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_SouthAfrica_4,layer_Rivers_7,layer_Towns_20]);
         map.on("zoomend", function(){
-            resetLabels([layer_Rivers_5,layer_Towns_18]);
+            resetLabels([layer_SouthAfrica_4,layer_Rivers_7,layer_Towns_20]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Rivers_5,layer_Towns_18]);
+            resetLabels([layer_SouthAfrica_4,layer_Rivers_7,layer_Towns_20]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Rivers_5,layer_Towns_18]);
+            resetLabels([layer_SouthAfrica_4,layer_Rivers_7,layer_Towns_20]);
         });
         </script>
     </body>
