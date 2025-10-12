@@ -7,6 +7,28 @@
 
 .leaflet-control-layers-list{
 	font: 13px / 1.7 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-right: 4px;
+}
+
+.leaflet-control-layers-list::-webkit-scrollbar {
+	width: 6px;
+}
+
+.leaflet-control-layers-list::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 3px;
+}
+
+.leaflet-control-layers-list::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+}
+
+.leaflet-control-layers-list::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .leaflet-layerstree-node {
@@ -14,10 +36,37 @@
 
 .leaflet-layerstree-header input{
     margin-left: 0px;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.leaflet-layerstree-header input:checked {
+    background: #4a90e2;
+    border-color: #4a90e2;
+}
+
+.leaflet-layerstree-header input:hover {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
 
 .leaflet-layerstree-header {
+	padding: 4px 8px;
+	margin: 2px 0;
+	border-radius: 6px;
+	transition: all 0.2s ease;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.leaflet-layerstree-header:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateX(2px);
 }
 
 .leaflet-layerstree-header-pointer {
@@ -25,22 +74,49 @@
 }
 
 .leaflet-layerstree-header label {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    font-weight: 500;
+    color: #444444;
+    transition: color 0.2s ease;
+}
+
+.leaflet-layerstree-header label:hover {
+    color: #2c3e50;
 }
 
 .leaflet-layerstree-header-label {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.leaflet-layerstree-header-label img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .leaflet-layerstree-header-name {
-	padding-left: 2px;
+	padding-left: 0px;
+	font-size: 13px;
+	line-height: 1.4;
+	font-weight: 500;
+	color: #444444;
 }
 
 .leaflet-layerstree-header-space {
 }
 
 .leaflet-layerstree-children {
-    padding-left: 20px;
+    padding-left: 24px;
+    margin-top: 4px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    margin-left: 8px;
 }
 
 .leaflet-layerstree-children-nopad {
@@ -63,4 +139,51 @@
 
 .leaflet-layerstree-expand-collapse {
     cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.2s ease;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.leaflet-layerstree-expand-collapse:hover {
+    color: #444;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Additional hover effects and transitions */
+.leaflet-layerstree-header img {
+    transition: all 0.2s ease;
+}
+
+.leaflet-layerstree-header:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-layerstree-children {
+    transition: all 0.3s ease;
+}
+
+.leaflet-layerstree-closed .leaflet-layerstree-children {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.leaflet-layerstree-opened .leaflet-layerstree-children {
+    opacity: 1;
+    max-height: 1000px;
+}
+
+/* Focus states for accessibility */
+.leaflet-layerstree-header input:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+.leaflet-layerstree-header label:focus-within {
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 4px;
 }

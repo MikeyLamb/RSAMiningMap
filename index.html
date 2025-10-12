@@ -118,12 +118,12 @@
             abstract.hide = function () {
                 this._div.classList.remove("abstractUncollapsed");
                 this._div.classList.add("abstract");
-                this._div.innerHTML = 'i'
+                this._div.innerHTML = '<i class="fas fa-info-circle"></i>'
             }
             abstract.show = function () {
                 this._div.classList.remove("abstract");
                 this._div.classList.add("abstractUncollapsed");
-                this._div.innerHTML = 'Data gathered and synthesised by One Ocean Hub Research Group, Department of Environmental and Geographical Science, UCT. <br />Disclaimer: This map is subject to constant updates based on available information. However, the accuracy of the polygons and the metadata cannot be guaranteed.  ';
+                this._div.innerHTML = '<div class="info-content"><h3><i class="fas fa-info-circle"></i> About This Map</h3><p><strong>Data Source:</strong> Data gathered and synthesised by One Ocean Hub Research Group, Department of Environmental and Geographical Science, University of Cape Town.</p><div class="disclaimer"><h4><i class="fas fa-exclamation-triangle"></i> Disclaimer</h4><p>This map is subject to constant updates based on available information. However, the accuracy of the polygons and the metadata cannot be guaranteed.</p></div></div>';
         };
         abstract.addTo(map);
         var zoomControl = L.control.zoom({
@@ -518,12 +518,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td>' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -546,9 +540,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td>' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -609,12 +600,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -637,9 +622,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -702,12 +684,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -730,9 +706,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -795,12 +768,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -823,9 +790,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -904,12 +868,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -932,9 +890,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -997,12 +952,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1025,9 +974,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1090,12 +1036,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1118,9 +1058,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1183,12 +1120,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1211,9 +1142,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1276,12 +1204,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1304,9 +1226,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1369,12 +1288,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1396,9 +1309,6 @@
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="Area (ha)"colspan="2"><strong>Area (ha)</strong><br />' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1461,12 +1371,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1489,9 +1393,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1554,12 +1455,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LastUpdate'] !== null ? autolinker.link(feature.properties['LastUpdate'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Status</th>\
                         <td class="visible-with-data" id="Status">' + (feature.properties['Status'] !== null ? autolinker.link(feature.properties['Status'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -1582,9 +1477,6 @@
                     <tr>\
                         <th scope="row">Area (ha)</th>\
                         <td class="visible-with-data" id="Area (ha)">' + (feature.properties['Area (ha)'] !== null ? autolinker.link(feature.properties['Area (ha)'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Table code'] !== null ? autolinker.link(feature.properties['Table code'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Primary Resources</th>\
@@ -1722,6 +1614,39 @@
             collapsed: false, 
         });
         lay.addTo(map);
+        
+        // Add legend title
+        setTimeout(function() {
+            var layersControl = document.querySelector('.leaflet-control-layers-expanded');
+            if (layersControl && !layersControl.querySelector('.leaflet-control-layers-title')) {
+                // Create header container
+                var headerElement = document.createElement('div');
+                headerElement.className = 'leaflet-control-layers-header';
+                
+                // Create title element
+                var titleElement = document.createElement('div');
+                titleElement.className = 'leaflet-control-layers-title';
+                titleElement.textContent = 'Map Layers';
+                
+                // Get the toggle button
+                var toggleButton = layersControl.querySelector('.leaflet-control-layers-toggle');
+                
+                if (toggleButton) {
+                    // Insert header before toggle button
+                    layersControl.insertBefore(headerElement, toggleButton);
+                    // Add title to header
+                    headerElement.appendChild(titleElement);
+                    // Move toggle button to header
+                    headerElement.appendChild(toggleButton);
+                    // Remove margin from toggle button since it's now in header
+                    toggleButton.style.marginBottom = '0';
+                } else {
+                    // Fallback: just add title at the beginning
+                    layersControl.insertBefore(titleElement, layersControl.firstChild);
+                }
+            }
+        }, 100);
+        
 		document.addEventListener("DOMContentLoaded", function() {
             // set new Layers List height which considers toggle icon
             function newLayersListHeight() {
@@ -1737,12 +1662,46 @@
             var isLayersListExpanded = true;
             var controlLayersElement = document.querySelector('.leaflet-control-layers');
             var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            // Function to add legend title
+            function addLegendTitle() {
+                var layersControl = document.querySelector('.leaflet-control-layers-expanded');
+                if (layersControl && !layersControl.querySelector('.leaflet-control-layers-title')) {
+                    // Create header container
+                    var headerElement = document.createElement('div');
+                    headerElement.className = 'leaflet-control-layers-header';
+                    
+                    // Create title element
+                    var titleElement = document.createElement('div');
+                    titleElement.className = 'leaflet-control-layers-title';
+                    titleElement.textContent = 'Map Layers';
+                    
+                    // Get the toggle button
+                    var toggleButton = layersControl.querySelector('.leaflet-control-layers-toggle');
+                    
+                    if (toggleButton) {
+                        // Insert header before toggle button
+                        layersControl.insertBefore(headerElement, toggleButton);
+                        // Add title to header
+                        headerElement.appendChild(titleElement);
+                        // Move toggle button to header
+                        headerElement.appendChild(toggleButton);
+                        // Remove margin from toggle button since it's now in header
+                        toggleButton.style.marginBottom = '0';
+                    } else {
+                        // Fallback: just add title at the beginning
+                        layersControl.insertBefore(titleElement, layersControl.firstChild);
+                    }
+                }
+            }
+            
             // toggle Collapsed/Expanded and apply new Layers List height
             toggleLayerControl.addEventListener('click', function() {
                 if (isLayersListExpanded) {
                     controlLayersElement.classList.remove('leaflet-control-layers-expanded');
                 } else {
                     controlLayersElement.classList.add('leaflet-control-layers-expanded');
+                    // Add title when expanded
+                    setTimeout(addLegendTitle, 50);
                 }
                 isLayersListExpanded = !isLayersListExpanded;
                 newLayersListHeight()
@@ -1762,6 +1721,8 @@
             }, 10);
             setTimeout(function() {
                 toggleLayerControl.click();
+                // Add title after initial expansion
+                setTimeout(addLegendTitle, 100);
             }, 10);
             // Collapsed touch/small screen
             var isSmallScreen = window.innerWidth < 650;
