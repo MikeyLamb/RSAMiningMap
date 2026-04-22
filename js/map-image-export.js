@@ -71,6 +71,16 @@
             '.map-image-export-file-preview-name{margin:8px 16px 0;font:12px/1.45 system-ui,sans-serif;color:#64748b;word-break:break-all;flex-shrink:0;}' +
             '.map-image-export-file-preview-imgwrap{flex:1;min-height:120px;overflow:auto;padding:14px 16px 18px;text-align:center;background:#f1f5f9;border-radius:0 0 14px 14px;}' +
             '.map-image-export-file-preview-imgwrap img{max-width:100%;height:auto;vertical-align:middle;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,.15);}' +
+            '.map-image-export-capture .leaflet-control-zoom,' +
+            '.map-image-export-capture .leaflet-control-locate,' +
+            '.map-image-export-capture .leaflet-control-measure,' +
+            '.map-image-export-capture .map-image-export-control,' +
+            '.map-image-export-capture #abstract{display:none !important;}' +
+            '.map-image-export-capture .leaflet-control-layers-toggle{display:none !important;}' +
+            '.map-image-export-capture .leaflet-layerstree-expand-collapse{display:none !important;}' +
+            '.map-image-export-capture .leaflet-layerstree-header-pointer{display:none !important;}' +
+            '.map-image-export-capture .leaflet-layerstree-header input[type=checkbox],' +
+            '.map-image-export-capture .leaflet-layerstree-header input[type=radio]{position:absolute;opacity:0;width:0;height:0;margin:0;pointer-events:none;}' +
             '@media (prefers-reduced-motion:reduce){.map-image-export-actions button:active:not(:disabled){transform:none;}}';
 
         var style = document.createElement('style');
@@ -102,6 +112,53 @@
             if (map.hasLayer(googleLayers[i])) return true;
         }
         return false;
+    }
+
+    /**
+     * For export: hide chrome widgets, expand legend, hide unchecked layer rows.
+     * Returns a function that restores the previous DOM state.
+     */
+    function beginMapExportLayout(mapEl) {
+        var undo = [];
+
+        mapEl.classList.add('map-image-export-capture');
+        undo.push(function () {
+            mapEl.classList.remove('map-image-export-capture');
+        });
+
+        var layersEl = mapEl.querySelector('.leaflet-control-layers');
+        var forcedExpand = false;
+        if (layersEl && !layersEl.classList.contains('leaflet-control-layers-expanded')) {
+            layersEl.classList.add('leaflet-control-layers-expanded');
+            forcedExpand = true;
+        }
+        if (forcedExpand && layersEl) {
+            undo.push(function () {
+                layersEl.classList.remove('leaflet-control-layers-expanded');
+            });
+        }
+
+        var hidden = [];
+        mapEl.querySelectorAll('.leaflet-layerstree-header').forEach(function (header) {
+            var inp = header.querySelector('input[type="checkbox"], input[type="radio"]');
+            if (!inp || inp.disabled) return;
+            if (inp.checked) return;
+            var node = header.closest('.leaflet-layerstree-node');
+            var el = node || header;
+            hidden.push({ el: el, display: el.style.display });
+            el.style.display = 'none';
+        });
+        undo.push(function () {
+            hidden.forEach(function (h) {
+                h.el.style.display = h.display;
+            });
+        });
+
+        return function endMapExportLayout() {
+            for (var i = undo.length - 1; i >= 0; i--) {
+                undo[i]();
+            }
+        };
     }
 
     function redrawTileLayersAndWait(map, timeoutMs) {
@@ -366,7 +423,7 @@
                         var intro = document.createElement('p');
                         intro.className = 'map-image-export-intro';
                         intro.textContent =
-                            'Saves what you see now: the same map area and layers you have turned on.';
+                            'Saves the current map view with the legend (only layers you have switched on), and the attribution references along the bottom. Other controls are hidden in the image.';
                         inner.appendChild(intro);
 
                         if (googleOn) {
@@ -485,10 +542,7 @@
                             status.textContent = 'Loading tiles…';
 
                             self.map.closePopup();
-                            var controlContainer = self.mapEl.querySelector('.leaflet-control-container');
-                            if (controlContainer) {
-                                controlContainer.style.visibility = 'hidden';
-                            }
+                            var endMapExportLayout = beginMapExportLayout(self.mapEl);
 
                             redrawTileLayersAndWait(self.map, 9000)
                                 .then(function () {
@@ -530,9 +584,7 @@
                                         'Export failed. Try a smaller resolution, refresh, or toggle layers.';
                                 })
                                 .finally(function () {
-                                    if (controlContainer) {
-                                        controlContainer.style.visibility = '';
-                                    }
+                                    endMapExportLayout();
                                     prepareBtn.disabled = isGoogleBasemapActive(
                                         self.map,
                                         self.googleLayers
