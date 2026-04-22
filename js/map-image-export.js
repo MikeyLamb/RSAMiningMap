@@ -81,24 +81,29 @@
             '.map-image-export-capture .leaflet-layerstree-header-pointer{display:none !important;}' +
             '.map-image-export-capture .leaflet-control-layers.leaflet-control-layers-expanded{' +
             'min-width:min(360px,92vw) !important;max-width:min(480px,94vw) !important;width:max-content !important;' +
-            'align-items:stretch !important;align-self:flex-start !important;}' +
+            'align-items:stretch !important;align-self:flex-start !important;' +
+            'padding:10px 10px 8px !important;}' +
+            '.map-image-export-capture .leaflet-control-layers-title{' +
+            'margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-control-layers-header{' +
-            'width:100% !important;flex-wrap:nowrap !important;margin-bottom:10px !important;}' +
+            'width:100% !important;flex-wrap:nowrap !important;margin-bottom:4px !important;' +
+            'padding-bottom:0 !important;}' +
+            '.map-image-export-capture .leaflet-layerstree-node{margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header:hover{transform:none !important;}' +
             '.map-image-export-capture .leaflet-control-layers-list{' +
             'max-height:none !important;overflow:visible !important;overflow-x:visible !important;' +
             'overflow-y:visible !important;width:100% !important;min-width:min(320px,88vw) !important;' +
-            'padding-right:8px !important;}' +
+            'padding-right:4px !important;margin:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-children.leaflet-layerstree-hide{' +
             'display:block !important;opacity:1 !important;visibility:visible !important;}' +
             '.map-image-export-capture .leaflet-layerstree-closed .leaflet-layerstree-children,' +
             '.map-image-export-capture .leaflet-layerstree-opened .leaflet-layerstree-children{' +
             'opacity:1 !important;max-height:none !important;overflow:visible !important;}' +
             '.map-image-export-capture .leaflet-layerstree-children{' +
-            'padding-left:0 !important;margin-left:0 !important;margin-top:6px !important;border-left:0 !important;}' +
+            'padding-left:0 !important;margin-left:0 !important;margin-top:2px !important;border-left:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header{' +
             'display:flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
-            'gap:10px !important;min-height:40px !important;padding:8px 10px !important;margin:4px 0 !important;}' +
+            'gap:6px !important;min-height:0 !important;padding:4px 8px !important;margin:2px 0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header > span:first-child:not(.leaflet-layerstree-nevershow){' +
             'display:none !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header > span:nth-child(2){' +
@@ -106,13 +111,14 @@
             '.map-image-export-capture .leaflet-layerstree-header label,' +
             '.map-image-export-capture .leaflet-layerstree-header-label{' +
             'display:flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
-            'gap:10px !important;flex:1 1 auto !important;min-width:0 !important;width:100% !important;}' +
+            'gap:6px !important;flex:1 1 auto !important;min-width:0 !important;width:100% !important;' +
+            'margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header-name{' +
             'display:inline-flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
-            'gap:10px !important;padding-left:0 !important;white-space:nowrap !important;' +
-            'font-size:13px !important;line-height:1.35 !important;}' +
+            'gap:6px !important;padding-left:0 !important;white-space:nowrap !important;' +
+            'font-size:13px !important;line-height:1.4 !important;margin:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header-name img{' +
-            'flex-shrink:0 !important;width:22px !important;height:22px !important;margin:0 !important;' +
+            'flex-shrink:0 !important;width:20px !important;height:20px !important;margin:0 !important;' +
             'vertical-align:middle !important;display:block !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header input[type=checkbox],' +
             '.map-image-export-capture .leaflet-layerstree-header input[type=radio]{' +
