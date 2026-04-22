@@ -19,6 +19,9 @@
             padding: 0;
             margin: 0;
         }
+        #map {
+            background: #e8eaed;
+        }
         </style>
         <title></title>
     </head>
@@ -38,6 +41,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
+        <script src="js/html-to-image.js"></script>
+        <script src="js/map-image-export.js"></script>
         <script src="data/SouthAfrica_4.js"></script>
         <script src="data/RSAEEZ_5.js"></script>
         <script src="data/AfricaOutline_6.js"></script>
@@ -188,7 +193,8 @@
             minZoom: 1,
             maxZoom: 25,
             minNativeZoom: 0,
-            maxNativeZoom: 19
+            maxNativeZoom: 19,
+            crossOrigin: true
         });
         layer_OpenStreetMap_3;
         function pop_SouthAfrica_4(feature, layer) {
@@ -824,6 +830,7 @@
             return {
                 pane: 'pane_ReconnaissancePermit_11',
                 stroke: false,
+                fill: true,
                 fillOpacity: 1,
                 fillPattern: pattern_ReconnaissancePermit_11_0,
                 interactive: true,
@@ -1614,6 +1621,15 @@
             collapsed: false, 
         });
         lay.addTo(map);
+
+        if (window.MapImageExport) {
+            window.MapImageExport.init({
+                map: map,
+                mapEl: document.getElementById('map'),
+                googleLayers: [layer_GoogleSatellite_0, layer_GoogleMaps_1, layer_GoogleHybrid_2],
+                osmLayer: layer_OpenStreetMap_3
+            });
+        }
         
         // Add legend title
         setTimeout(function() {

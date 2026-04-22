@@ -4,8 +4,9 @@ This directory contains Python scripts to convert GeoPackage (.gpkg) files to th
 
 ## Files
 
-- `convert_gpkg_to_js.py` - Single file converter
-- `batch_convert_gpkg.py` - Batch converter for multiple files
+- `convert_gpkg_to_js.py` - Single file converter (also exposes `convert_gdf_to_js` for in-memory GeoDataFrames)
+- `batch_convert_gpkg.py` - Converts `Mining Right.gpkg`, or splits combined RSA Mining Areas by `Status` (see below)
+- `mining_js_outputs.py` - Shared mapping from QGIS-style `.gpkg` names to `data/*.js` layer and variable names
 - `CONVERSION_README.md` - This documentation
 
 ## Prerequisites
@@ -53,6 +54,34 @@ You can specify a different input directory:
 ```bash
 python batch_convert_gpkg.py "C:\path\to\your\gpkg\files"
 ```
+
+### Split combined RSA Mining Areas by Status (recommended)
+
+If you maintain a single GeoPackage, `rsa_mining_file/RSA Mining Areas.gpkg`, with one layer named **RSA Mining Areas** and a **Status** attribute on each feature, you can regenerate all twelve concession `.js` files in `data/` in one step. You no longer need to split by status in QGIS, export separate `.gpkg` files, and run the batch script on each.
+
+Default input is `rsa_mining_file/RSA Mining Areas.gpkg` next to the script; default output is the project `data/` folder.
+
+```bash
+python batch_convert_gpkg.py --rsa-mining-areas
+```
+
+Optional custom paths (input GeoPackage, then output directory):
+
+```bash
+python batch_convert_gpkg.py --rsa-mining-areas "D:\path\RSA Mining Areas.gpkg" "D:\path\RSAMiningMap\data"
+```
+
+**Status normalization:** Before grouping, each **Status** is normalized (Unicode NFKC, collapsed spaces, case-insensitive match to the known stems in the naming table). A few common spelling variants are mapped—for example ``Reconnaisance Permit`` → ``Reconnaissance Permit``—see ``STATUS_ALIASES_LOWER`` in `mining_js_outputs.py` to add more.
+
+Each distinct normalized status must match a stem in the naming table (for example `Mining Right` maps to `MiningRight_19.js`, same as exporting `Mining Right.gpkg` from QGIS). Features with null or blank **Status** are skipped with a warning. Unknown status strings are skipped with a warning that lists the raw **Status** values in that group.
+
+**Statuses absent from the GeoPackage:** By default, layer files for statuses with *no* rows are left unchanged on disk, so an old `ReconnaissancePermit_11.js` can still appear on the map after you remove all reconnaissance rows from the GeoPackage. The summary lists those untouched files. To overwrite them with empty feature collections (clearing the map for those layers), run:
+
+```bash
+python batch_convert_gpkg.py --rsa-mining-areas --write-all-layers
+```
+
+Optional paths work the same way as without the flag (paths are any arguments that are not `--rsa-mining-areas` or `--write-all-layers`).
 
 ## Field Mapping
 
@@ -141,7 +170,7 @@ The batch converter uses these predefined mappings:
 | `Prospecting Right.gpkg` | `ProspectingRight_17.js` | `ProspectingRight_17` | `json_ProspectingRight_17` |
 | ... | ... | ... | ... |
 
-## Example Workflow
+## Example Workflow (QGIS split + batch)
 
 1. **Create the conversion directory**:
    ```
@@ -160,6 +189,18 @@ The batch converter uses these predefined mappings:
 5. **Test the map** by opening `index.html` in a web browser
 
 6. **Deploy** the updated files to your web server
+
+## Example Workflow (single combined GeoPackage)
+
+1. Export or copy your combined layer to `rsa_mining_file/RSA Mining Areas.gpkg` (layer name **RSA Mining Areas**, with a **Status** column).
+
+2. From the repository root, run:
+
+   ```bash
+   python batch_convert_gpkg.py --rsa-mining-areas
+   ```
+
+3. Open `index.html` in a browser and confirm the layers load as expected.
 
 ## Notes
 
