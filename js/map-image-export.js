@@ -510,6 +510,55 @@
 
                         var lastBlob = null;
                         var lastExt = 'png';
+                        var isPreparing = false;
+
+                        function syncActionButtons() {
+                            var googleBlock = isGoogleBasemapActive(
+                                self.map,
+                                self.googleLayers
+                            );
+                            if (googleBlock) {
+                                prepareBtn.style.display = '';
+                                prepareBtn.disabled = true;
+                                saveBtn.style.display = 'none';
+                                saveBtn.disabled = true;
+                                return;
+                            }
+                            if (isPreparing) {
+                                prepareBtn.style.display = '';
+                                prepareBtn.disabled = true;
+                                saveBtn.style.display = 'none';
+                                saveBtn.disabled = true;
+                                return;
+                            }
+                            if (lastBlob) {
+                                prepareBtn.style.display = 'none';
+                                prepareBtn.disabled = true;
+                                saveBtn.style.display = '';
+                                saveBtn.disabled = false;
+                                return;
+                            }
+                            prepareBtn.style.display = '';
+                            prepareBtn.disabled = false;
+                            saveBtn.style.display = 'none';
+                            saveBtn.disabled = true;
+                        }
+
+                        function onExportConfigChange() {
+                            if (!lastBlob) {
+                                return;
+                            }
+                            lastBlob = null;
+                            status.textContent =
+                                'Options changed. Prepare download again to update the image.';
+                            syncActionButtons();
+                        }
+
+                        inner
+                            .querySelectorAll('input[name="map-export-fmt"], input[name="map-export-q"]')
+                            .forEach(function (input) {
+                                input.addEventListener('change', onExportConfigChange);
+                            });
 
                         function getPixelRatio() {
                             var r = inner.querySelector('input[name="map-export-q"]:checked');
@@ -535,10 +584,9 @@
                             var exportMime =
                                 exportFormat === 'jpeg' ? 'image/jpeg' : 'image/png';
 
-                            prepareBtn.disabled = true;
-                            saveBtn.style.display = 'none';
-                            saveBtn.disabled = true;
+                            isPreparing = true;
                             lastBlob = null;
+                            syncActionButtons();
                             status.textContent = 'Loading tiles…';
 
                             self.map.closePopup();
@@ -574,9 +622,7 @@
                                 .then(function (blob) {
                                     lastBlob = blob;
                                     lastExt = exportFormat === 'jpeg' ? 'jpg' : 'png';
-                                    status.textContent = 'Ready. Choose Save image to download.';
-                                    saveBtn.style.display = '';
-                                    saveBtn.disabled = false;
+                                    status.textContent = 'Ready. Use Save image to download.';
                                 })
                                 .catch(function (err) {
                                     console.error(err);
@@ -584,11 +630,9 @@
                                         'Export failed. Try a smaller resolution, refresh, or toggle layers.';
                                 })
                                 .finally(function () {
+                                    isPreparing = false;
                                     endMapExportLayout();
-                                    prepareBtn.disabled = isGoogleBasemapActive(
-                                        self.map,
-                                        self.googleLayers
-                                    );
+                                    syncActionButtons();
                                 });
                         });
 
@@ -600,6 +644,8 @@
                                     ? 'Preview opened — right-click the image and choose Save image as…'
                                     : 'Download started.';
                         });
+
+                        syncActionButtons();
                     }
 
                     buildPanel();
