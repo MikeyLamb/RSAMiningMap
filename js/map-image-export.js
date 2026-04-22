@@ -125,6 +125,10 @@
             'position:static !important;opacity:0 !important;width:0 !important;height:0 !important;' +
             'margin:0 !important;padding:0 !important;border:none !important;flex:0 0 0 !important;' +
             'overflow:hidden !important;pointer-events:none !important;}' +
+            '.map-image-export-capture.map-image-export-map-only .leaflet-control-layers,' +
+            '.map-image-export-capture.map-image-export-map-only .leaflet-control-attribution,' +
+            '.map-image-export-capture.map-image-export-map-only .leaflet-control-scale{' +
+            'display:none !important;}' +
             '@media (prefers-reduced-motion:reduce){.map-image-export-actions button:active:not(:disabled){transform:none;}}';
 
         var style = document.createElement('style');
@@ -159,16 +163,31 @@
     }
 
     /**
-     * For export: hide chrome widgets, expand legend, hide unchecked layer rows.
+     * For export: hide chrome widgets; optionally expand legend and hide unchecked rows.
+     * opts.mapOnly: hide legend and attribution for a clean map image.
      * Returns a function that restores the previous DOM state.
      */
-    function beginMapExportLayout(mapEl) {
+    function beginMapExportLayout(mapEl, opts) {
+        opts = opts || {};
+        var mapOnly = !!opts.mapOnly;
         var undo = [];
 
         mapEl.classList.add('map-image-export-capture');
         undo.push(function () {
             mapEl.classList.remove('map-image-export-capture');
         });
+
+        if (mapOnly) {
+            mapEl.classList.add('map-image-export-map-only');
+            undo.push(function () {
+                mapEl.classList.remove('map-image-export-map-only');
+            });
+            return function endMapExportLayout() {
+                for (var i = undo.length - 1; i >= 0; i--) {
+                    undo[i]();
+                }
+            };
+        }
 
         var layersEl = mapEl.querySelector('.leaflet-control-layers');
         var forcedExpand = false;
@@ -481,7 +500,7 @@
                         var intro = document.createElement('p');
                         intro.className = 'map-image-export-intro';
                         intro.textContent =
-                            'Saves the current map view with the legend (only layers you have switched on), and the attribution references along the bottom. Other controls are hidden in the image.';
+                            'You can include the legend (only layers that are on) and bottom attribution, or export a clean map with no legend or attribution. Other controls are always hidden in the image.';
                         inner.appendChild(intro);
 
                         if (googleOn) {
@@ -543,6 +562,26 @@
                             'Higher resolution uses more memory; on phones we cap “Maximum” to 2×.';
                         qFs.appendChild(qHint);
                         inner.appendChild(qFs);
+
+                        var contentFs = document.createElement('fieldset');
+                        contentFs.className = 'map-image-export-section';
+                        var contentLeg = document.createElement('legend');
+                        contentLeg.textContent = 'Image content';
+                        contentFs.appendChild(contentLeg);
+                        var contentWith = document.createElement('label');
+                        contentWith.innerHTML =
+                            '<input type="radio" name="map-export-content" value="with-legend" checked> Legend and bottom attribution';
+                        var contentClean = document.createElement('label');
+                        contentClean.innerHTML =
+                            '<input type="radio" name="map-export-content" value="map-only"> Map only (no legend or attribution)';
+                        contentFs.appendChild(contentWith);
+                        contentFs.appendChild(contentClean);
+                        var contentHint = document.createElement('div');
+                        contentHint.className = 'hint';
+                        contentHint.textContent =
+                            'Map only is useful for a plain geographic view. For published maps, consider including attribution where required.';
+                        contentFs.appendChild(contentHint);
+                        inner.appendChild(contentFs);
 
                         var status = document.createElement('div');
                         status.className = 'map-image-export-status';
@@ -613,7 +652,9 @@
                         }
 
                         inner
-                            .querySelectorAll('input[name="map-export-fmt"], input[name="map-export-q"]')
+                            .querySelectorAll(
+                                'input[name="map-export-fmt"], input[name="map-export-q"], input[name="map-export-content"]'
+                            )
                             .forEach(function (input) {
                                 input.addEventListener('change', onExportConfigChange);
                             });
@@ -626,6 +667,11 @@
                         function getFormat() {
                             var r = inner.querySelector('input[name="map-export-fmt"]:checked');
                             return r && r.value === 'jpeg' ? 'jpeg' : 'png';
+                        }
+
+                        function getMapOnly() {
+                            var r = inner.querySelector('input[name="map-export-content"]:checked');
+                            return !!(r && r.value === 'map-only');
                         }
 
                         prepareBtn.addEventListener('click', function () {
@@ -648,7 +694,10 @@
                             status.textContent = 'Loading tiles…';
 
                             self.map.closePopup();
-                            var endMapExportLayout = beginMapExportLayout(self.mapEl);
+                            var mapOnlyExport = getMapOnly();
+                            var endMapExportLayout = beginMapExportLayout(self.mapEl, {
+                                mapOnly: mapOnlyExport
+                            });
 
                             redrawTileLayersAndWait(self.map, 9000)
                                 .then(function () {
@@ -666,7 +715,9 @@
                                 })
                                 .then(function (blob) {
                                     var osmFooter =
-                                        self.osmLayer && self.map.hasLayer(self.osmLayer);
+                                        !mapOnlyExport &&
+                                        self.osmLayer &&
+                                        self.map.hasLayer(self.osmLayer);
                                     if (osmFooter) {
                                         status.textContent = 'Adding map attribution…';
                                         return addOsmFooterBlob(
