@@ -4,7 +4,7 @@
 (function (global) {
     'use strict';
 
-    var JPEG_QUALITY = 0.96;
+    var JPEG_QUALITY = 0.92;
     var OSM_FOOTER_PX = 32;
 
     function injectStyles() {
@@ -80,20 +80,20 @@
             '.map-image-export-capture .leaflet-layerstree-expand-collapse{display:none !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header-pointer{display:none !important;}' +
             '.map-image-export-capture .leaflet-control-layers.leaflet-control-layers-expanded{' +
-            'min-width:0 !important;max-width:min(480px,94vw) !important;width:max-content !important;' +
-            'align-items:flex-start !important;align-self:flex-start !important;' +
-            'padding:10px 10px 8px !important;}' +
+            'min-width:min(332px,92vw) !important;max-width:min(448px,94vw) !important;width:max-content !important;' +
+            'align-items:stretch !important;align-self:flex-start !important;' +
+            'padding:10px 8px 8px !important;}' +
             '.map-image-export-capture .leaflet-control-layers-title{' +
             'margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-control-layers-header{' +
-            'width:max-content !important;max-width:100% !important;flex-wrap:nowrap !important;' +
-            'margin-bottom:4px !important;padding-bottom:0 !important;}' +
+            'width:100% !important;flex-wrap:nowrap !important;margin-bottom:4px !important;' +
+            'padding-bottom:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-node{margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header:hover{transform:none !important;}' +
             '.map-image-export-capture .leaflet-control-layers-list{' +
             'max-height:none !important;overflow:visible !important;overflow-x:visible !important;' +
-            'overflow-y:visible !important;width:max-content !important;min-width:0 !important;' +
-            'max-width:min(460px,92vw) !important;padding-right:4px !important;margin:0 !important;}' +
+            'overflow-y:visible !important;width:100% !important;min-width:min(300px,88vw) !important;' +
+            'padding-right:2px !important;margin:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-children.leaflet-layerstree-hide{' +
             'display:block !important;opacity:1 !important;visibility:visible !important;}' +
             '.map-image-export-capture .leaflet-layerstree-closed .leaflet-layerstree-children,' +
@@ -103,24 +103,20 @@
             'padding-left:0 !important;margin-left:0 !important;margin-top:2px !important;border-left:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header{' +
             'display:flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
-            'gap:6px !important;min-height:0 !important;padding:4px 8px !important;margin:2px 0 !important;' +
-            'width:max-content !important;max-width:min(460px,92vw) !important;box-sizing:border-box !important;}' +
+            'gap:6px !important;min-height:0 !important;padding:4px 8px !important;margin:2px 0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header > span:first-child:not(.leaflet-layerstree-nevershow){' +
             'display:none !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header > span:nth-child(2){' +
-            'flex:0 1 auto !important;min-width:0 !important;max-width:100% !important;' +
-            'display:flex !important;align-items:center !important;}' +
+            'flex:1 1 auto !important;min-width:0 !important;display:flex !important;align-items:center !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header label,' +
             '.map-image-export-capture .leaflet-layerstree-header-label{' +
             'display:flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
-            'gap:6px !important;flex:0 1 auto !important;min-width:0 !important;width:auto !important;' +
-            'max-width:100% !important;margin:0 !important;padding:0 !important;}' +
+            'gap:6px !important;flex:1 1 auto !important;min-width:0 !important;width:100% !important;' +
+            'margin:0 !important;padding:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header-name{' +
-            'display:inline-flex !important;flex-flow:row wrap !important;align-items:center !important;' +
-            'gap:6px !important;padding-left:0 !important;white-space:normal !important;' +
-            'word-break:break-word !important;overflow-wrap:anywhere !important;' +
-            'font-size:13px !important;line-height:1.4 !important;margin:0 !important;' +
-            'max-width:min(420px,88vw) !important;}' +
+            'display:inline-flex !important;flex-flow:row nowrap !important;align-items:center !important;' +
+            'gap:6px !important;padding-left:0 !important;white-space:nowrap !important;' +
+            'font-size:13px !important;line-height:1.4 !important;margin:0 !important;}' +
             '.map-image-export-capture .leaflet-layerstree-header-name img{' +
             'flex-shrink:0 !important;width:20px !important;height:20px !important;margin:0 !important;' +
             'vertical-align:middle !important;display:block !important;}' +
@@ -533,7 +529,7 @@
                         qHi.innerHTML =
                             '<input type="radio" name="map-export-q" value="2"> High (larger file, sharper)';
                         var qMax = document.createElement('label');
-                        var prMax = global.innerWidth < 650 ? '3' : '4';
+                        var prMax = global.innerWidth < 650 ? '2' : '3';
                         qMax.innerHTML =
                             '<input type="radio" name="map-export-q" value="' +
                             prMax +
@@ -544,7 +540,7 @@
                         var qHint = document.createElement('div');
                         qHint.className = 'hint';
                         qHint.textContent =
-                            'Higher resolution uses more memory; on phones we cap “Maximum” to 3×.';
+                            'Higher resolution uses more memory; on phones we cap “Maximum” to 2×.';
                         qFs.appendChild(qHint);
                         inner.appendChild(qFs);
 
@@ -624,7 +620,7 @@
 
                         function getPixelRatio() {
                             var r = inner.querySelector('input[name="map-export-q"]:checked');
-                            return r ? Math.min(4, Math.max(1, parseFloat(r.value) || 1)) : 1;
+                            return r ? Math.min(3, Math.max(1, parseFloat(r.value) || 1)) : 1;
                         }
 
                         function getFormat() {
