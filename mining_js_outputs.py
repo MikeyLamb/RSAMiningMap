@@ -35,6 +35,7 @@ STATUS_ALIASES_LOWER = {
     'reconnaisance permit': 'Reconnaissance Permit',
     'reconissance permit': 'Reconnaissance Permit',
     'reconnaissance permits': 'Reconnaissance Permit',
+    'unknown status': 'Empty Concession',
 }
 
 # Stable order for optional ``--write-all-layers`` empty outputs
