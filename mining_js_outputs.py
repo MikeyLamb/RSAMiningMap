@@ -21,7 +21,7 @@ FILE_MAPPINGS = {
     'Reconnaissance Permit.gpkg': ('ReconnaissancePermit_11.js', 'ReconnaissancePermit_11', 'json_ReconnaissancePermit_11'),
     'Application Refused.gpkg': ('ApplicationRefused_10.js', 'ApplicationRefused_10', 'json_ApplicationRefused_10'),
     'Prospecting Right Expired.gpkg': ('ProspectingRightExpired_9.js', 'ProspectingRightExpired_9', 'json_ProspectingRightExpired_9'),
-    'Empty Concession.gpkg': ('EmptyConcession_8.js', 'EmptyConcession_8', 'json_EmptyConcession_8'),
+    'Unknown Status.gpkg': ('UnknownStatus_8.js', 'UnknownStatus_8', 'json_UnknownStatus_8'),
 }
 
 RSA_MINING_AREAS_LAYER = 'RSA Mining Areas'
@@ -35,7 +35,6 @@ STATUS_ALIASES_LOWER = {
     'reconnaisance permit': 'Reconnaissance Permit',
     'reconissance permit': 'Reconnaissance Permit',
     'reconnaissance permits': 'Reconnaissance Permit',
-    'unknown status': 'Empty Concession',
 }
 
 # Stable order for optional ``--write-all-layers`` empty outputs

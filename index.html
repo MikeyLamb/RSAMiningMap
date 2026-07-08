@@ -47,7 +47,7 @@
         <script src="data/RSAEEZ_5.js"></script>
         <script src="data/AfricaOutline_6.js"></script>
         <script src="data/Rivers_7.js"></script>
-        <script src="data/EmptyConcession_8.js"></script>
+        <script src="data/UnknownStatus_8.js"></script>
         <script src="data/ProspectingRightExpired_9.js"></script>
         <script src="data/ApplicationRefused_10.js"></script>
         <script src="data/ReconnaissancePermit_11.js"></script>
@@ -511,7 +511,7 @@
         });
         bounds_group.addLayer(layer_Rivers_7);
         map.addLayer(layer_Rivers_7);
-        function pop_EmptyConcession_8(feature, layer) {
+        function pop_UnknownStatus_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -567,9 +567,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_EmptyConcession_8_0() {
+        function style_UnknownStatus_8_0() {
             return {
-                pane: 'pane_EmptyConcession_8',
+                pane: 'pane_UnknownStatus_8',
                 opacity: 1,
                 color: 'rgba(60,60,60,1.0)',
                 dashArray: '',
@@ -580,19 +580,19 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_EmptyConcession_8');
-        map.getPane('pane_EmptyConcession_8').style.zIndex = 408;
-        map.getPane('pane_EmptyConcession_8').style['mix-blend-mode'] = 'normal';
-        var layer_EmptyConcession_8 = new L.geoJson(json_EmptyConcession_8, {
+        map.createPane('pane_UnknownStatus_8');
+        map.getPane('pane_UnknownStatus_8').style.zIndex = 408;
+        map.getPane('pane_UnknownStatus_8').style['mix-blend-mode'] = 'normal';
+        var layer_UnknownStatus_8 = new L.geoJson(json_UnknownStatus_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_EmptyConcession_8',
-            layerName: 'layer_EmptyConcession_8',
-            pane: 'pane_EmptyConcession_8',
-            onEachFeature: pop_EmptyConcession_8,
-            style: style_EmptyConcession_8_0,
+            dataVar: 'json_UnknownStatus_8',
+            layerName: 'layer_UnknownStatus_8',
+            pane: 'pane_UnknownStatus_8',
+            onEachFeature: pop_UnknownStatus_8,
+            style: style_UnknownStatus_8_0,
         });
-        bounds_group.addLayer(layer_EmptyConcession_8);
+        bounds_group.addLayer(layer_UnknownStatus_8);
         function pop_ProspectingRightExpired_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1602,7 +1602,7 @@
             {label: '<img src="legend/ReconnaissancePermit_11.png" /> Reconnaissance Permit', layer: layer_ReconnaissancePermit_11},
             {label: '<img src="legend/ApplicationRefused_10.png" /> Application Refused', layer: layer_ApplicationRefused_10},
             {label: '<img src="legend/ProspectingRightExpired_9.png" /> Prospecting Right Expired', layer: layer_ProspectingRightExpired_9},
-            {label: '<img src="legend/EmptyConcession_8.png" /> Unknown Status', layer: layer_EmptyConcession_8},
+            {label: '<img src="legend/UnknownStatus_8.png" /> Unknown Status', layer: layer_UnknownStatus_8},
             {label: '<img src="legend/Rivers_7.png" /> Rivers', layer: layer_Rivers_7},
             {label: '<img src="legend/AfricaOutline_6.png" /> Africa Outline', layer: layer_AfricaOutline_6},
             {label: '<img src="legend/RSAEEZ_5.png" /> RSA EEZ', layer: layer_RSAEEZ_5},
