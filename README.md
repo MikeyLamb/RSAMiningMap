@@ -21,7 +21,13 @@ To view the map click the following link: [RSAMiningMap](https://mikeylamb.githu
 
 Concession polygons for the map are produced as JavaScript GeoJSON files under `data/`. To regenerate them from GeoPackages, use Python with **geopandas** installed. Full instructions, field mapping, and file naming are in [CONVERSION_README.md](CONVERSION_README.md).
 
-- **Single combined package:** place `RSA Mining Areas.gpkg` in `rsa_mining_file/`, then run `python batch_convert_gpkg.py --rsa-mining-areas` from the project root to split by **Status** (values are normalized for case and spacing; see `mining_js_outputs.py`) and overwrite each layer file that has at least one matching feature. Use `--write-all-layers` on the same command if you need empty outputs for statuses missing from the GeoPackage so old polygons are cleared from the map.
+- **Single combined package:** place `RSA Mining Areas.gpkg` in `rsa_mining_file/`, then run from the project root:
+
+```bash
+python batch_convert_gpkg.py --rsa-mining-areas --write-all-layers
+```
+
+This splits by **Status** (values are normalized for case and spacing; see `mining_js_outputs.py`), overwrites each matching layer file, and writes empty outputs for statuses missing from the GeoPackage so old polygons are cleared from the map.
 
 - **Separate QGIS exports:** use `convert_gpkg_to_js.py` for one file, or `batch_convert_gpkg.py` without flags for the default **Mining Right** path (see CONVERSION_README).
 
